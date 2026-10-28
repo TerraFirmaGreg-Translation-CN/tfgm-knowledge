@@ -1,0 +1,59 @@
+name: Update knowledge
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Stable release tag, or latest
+        default: latest
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: knowledge-update
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+      - uses: actions/cache@v4
+        with:
+          path: .cache/sources
+          key: sources-v1-${{ github.run_id }}
+          restore-keys: sources-v1-
+      - name: Resolve, synchronize and build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TFGM_VERSION: ${{ inputs.version || 'latest' }}
+        run: python -u -m tfgm_knowledge update --version "$TFGM_VERSION"
+      - name: Write build summary
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path('dist')
+          latest = json.loads((root / 'latest.json').read_text())
+          bundle = root / latest['directory']
+          manifest = json.loads((bundle / 'manifest.json').read_text())
+          report = json.loads((bundle / 'report.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write(f"TFGM {manifest['modpack_version']}: {manifest['file_count']} files, {manifest['record_count']} records.\n\n")
+              for item in report['export_status']:
+                  out.write(f"- {item['id']}: {item['status']} ({item.get('build', {}).get('modpack', 'unknown')})\n")
+              out.write('\nRuntime EMI records are not imported in v0.1. See report.json for coverage.\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tfgm-knowledge-${{ github.run_number }}
+          path: |
+            dist/*.zip
+            dist/latest.json
+          retention-days: 7
+          if-no-files-found: error

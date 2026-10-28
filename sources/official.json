@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "languages": [
+    "en_us",
+    "zh_cn"
+  ],
+  "platform": "curseforge",
+  "sources": [
+    {
+      "id": "modpack",
+      "repository": "TerraFirmaGreg-Team/Modpack-Modern",
+      "ref_policy": "release",
+      "role": "gameplay",
+      "include": [
+        "/*.md",
+        "/LICENSE*",
+        "/COPYING*",
+        "/NOTICE*",
+        "/pakku*.json",
+        "/config/ftbquests/**",
+        "/config/*.toml",
+        "/defaultconfigs/**",
+        "/kubejs/**/*.js",
+        "/kubejs/data/**",
+        "/kubejs/assets/**/lang/en_us.json",
+        "/kubejs/assets/**/lang/zh_cn.json",
+        "/kubejs/assets/**/patchouli_books/**/en_us/**",
+        "/kubejs/assets/**/patchouli_books/**/zh_cn/**",
+        "/kubejs/assets/**/lang/en_us/**",
+        "/kubejs/assets/**/lang/zh_cn/**"
+      ]
+    },
+    {
+      "id": "core",
+      "repository": "TerraFirmaGreg-Team/Core-Modern",
+      "ref_policy": "dependency",
+      "role": "implementation",
+      "include": [
+        "/*.md",
+        "/LICENSE*",
+        "/COPYING*",
+        "/NOTICE*",
+        "/gradle/*.toml",
+        "/src/main/java/**",
+        "/src/main/resources/data/**",
+        "/src/generated/resources/data/**",
+        "/src/main/resources/assets/**/lang/en_us.json",
+        "/src/main/resources/assets/**/lang/zh_cn.json"
+      ]
+    },
+    {
+      "id": "wiki",
+      "repository": "TerraFirmaGreg-Team/Wiki",
+      "ref_policy": "main",
+      "role": "documentation",
+      "include": [
+        "/*.md",
+        "/LICENSE*",
+        "/COPYING*",
+        "/NOTICE*",
+        "/docs/modern/en_us/**",
+        "/docs/modern/zh_cn/**"
+      ]
+    },
+    {
+      "id": "field-guide",
+      "repository": "TerraFirmaGreg-Team/Field-Guide-Modern",
+      "ref_policy": "main",
+      "role": "export-tool",
+      "include": [
+        "/*.md",
+        "/LICENSE*",
+        "/COPYING*",
+        "/NOTICE*",
+        "/ci/**",
+        "/.github/workflows/**",
+        "/src/main/java/**",
+        "/assets/lang/en_us.json",
+        "/assets/lang/zh_cn.json"
+      ]
+    },
+    {
+      "id": "quest-book",
+      "repository": "TerraFirmaGreg-Team/QuestBook-Modern",
+      "ref_policy": "main",
+      "role": "export-tool",
+      "include": [
+        "/*.md",
+        "/LICENSE*",
+        "/COPYING*",
+        "/NOTICE*",
+        "/ci/**",
+        "/.github/workflows/**",
+        "/language.json"
+      ]
+    },
+    {
+      "id": "recipe-book",
+      "repository": "TerraFirmaGreg-Team/RecipeBook-Modern",
+      "ref_policy": "main",
+      "role": "export-tool",
+      "include": [
+        "/*.md",
+        "/LICENSE*",
+        "/COPYING*",
+        "/NOTICE*",
+        "/ci/**",
+        "/.github/workflows/**",
+        "/scripts/**",
+        "/language.json"
+      ]
+    }
+  ]
+}
