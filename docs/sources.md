@@ -9,7 +9,7 @@
 | 整合包稳定版 | `0.13.17`，commit `32ba9f19d60bfc5b4148888fc84e50316b2b0fed` |
 | Core 依赖 | `TerraFirmaGreg-Core-Modern-0.9.31.jar`，对应标签 `0.9.31` |
 | 在线任务书 | `0.13.17`，与目标版本匹配 |
-| 在线野外手册 | `0.13.16`，落后一个版本 |
+| 在线野外手册 | 复核已更新到 `0.13.17`，与目标版本匹配 |
 | 在线配方书 | `0.13.15`，落后两个版本 |
 | TFC 分支 | Core 源码包含 `src/main/java/net/dries007/tfc/`，本阶段直接纳入 Core 来源，不猜测另一个分支仓库 |
 
@@ -61,3 +61,5 @@
 | [FTB Quests](https://github.com/FTBTeam/FTB-Quests) | 任务条件、字段和解锁语义 |
 
 不根据名称自动把一个模组映射到某个仓库。应先从 `dependencies.json` 的平台项目 ID、版本文件和对应项目元数据确认，再添加匹配来源。
+
+本轮已核对的固定版本、196 份候选正文文件和接入限制见 [上游文档扩展分析](upstream-expansion.md)；逐文件 commit、Git blob 哈希和语言见 [`sources/upstream-review.json`](../sources/upstream-review.json)。该清单用于审查，不会自动混入已发布的玩家知识包。

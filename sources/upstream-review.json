@@ -1,0 +1,1231 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-28",
+  "modpack_version": "0.13.17",
+  "modpack_commit": "32ba9f19d60bfc5b4148888fc84e50316b2b0fed",
+  "platform": "curseforge",
+  "purpose": "upstream-document-review; not an automatic player-pack ingestion configuration",
+  "sources": [
+    {
+      "id": "gtceu",
+      "repository": "GregTechCEu/GregTech-Modern",
+      "ref": "v7.5.3-1.20.1",
+      "commit": "91a79b8a7a2b62ec6277423e6c0ded4af89a831e",
+      "dependency_file": "gtceu-1.20.1-7.5.3.jar",
+      "version_relation": "installed-mod-version-matched; TFGM overrides not yet reconciled",
+      "status": "review-only",
+      "license_path": "docs/LICENSE",
+      "license_review": "CC0-1.0",
+      "document_count": 16,
+      "documents": [
+        {
+          "path": "docs/content/Gameplay/Central-Monitor.md",
+          "git_blob_sha1": "037ab83c6e280bbada97953326a08ce9ea490870",
+          "bytes": 5083,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Electricity/Cables-and-Transformers.md",
+          "git_blob_sha1": "a7111278c6f54fc200098b65868bbaca998e48ca",
+          "bytes": 9304,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Electricity/Energy-Storage.md",
+          "git_blob_sha1": "7e6db922d2569437ac023f308db93b50f164cb97",
+          "bytes": 5041,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Electricity/Generators.md",
+          "git_blob_sha1": "b0402adee5cc8f3e5c51b7823c778047d1c0ab8f",
+          "bytes": 8673,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Electricity/Machines.md",
+          "git_blob_sha1": "644e1a0ed1405308035006d28d1dff297b3a6173",
+          "bytes": 11623,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Electricity/index.md",
+          "git_blob_sha1": "bb304a95edfac936f7eb523feba92d07377fbebd",
+          "bytes": 1872,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Logistics/Covers.md",
+          "git_blob_sha1": "000f4ddf8f0c1f2bf5676c854a68fc3d0c4f36a3",
+          "bytes": 6911,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Logistics/Machines.md",
+          "git_blob_sha1": "6dcc68d5d20428d6ad72f23b0a3b63d3c01684e7",
+          "bytes": 7318,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Logistics/Pipes.md",
+          "git_blob_sha1": "afc9b25dba1f0187e1bd4865e462fbdcac22f19c",
+          "bytes": 6338,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Logistics/index.md",
+          "git_blob_sha1": "e57afaccfd7ed411a4d604dd98fcb37aeb13bb3f",
+          "bytes": 452,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Ore-Generation.md",
+          "git_blob_sha1": "de3824819a16a8dca6ebb2327502734f3bb9732a",
+          "bytes": 4124,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Steam/Bronze.md",
+          "git_blob_sha1": "728c596f1e047a21a72418c32da6b32917d1e57a",
+          "bytes": 561,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Steam/Steam-Generation.md",
+          "git_blob_sha1": "1da1cbc60fad34c9370b4d602999e2a4e415ea65",
+          "bytes": 1525,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Steam/Steam-Usage.md",
+          "git_blob_sha1": "21c0e474ea6bc3453c333095a0c56586a07fb7e6",
+          "bytes": 2592,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/Steam/index.md",
+          "git_blob_sha1": "c93714c03d6a36ee0e24ed247f3410262945e42d",
+          "bytes": 425,
+          "language": "en_us"
+        },
+        {
+          "path": "docs/content/Gameplay/index.md",
+          "git_blob_sha1": "fac57f24ddee3966c9381332ff9c55db07e4a4ac",
+          "bytes": 41,
+          "language": "en_us"
+        }
+      ],
+      "download_verification": "196 selected files downloaded locally; Git blob hashes verified"
+    },
+    {
+      "id": "firmalife",
+      "repository": "eerussianguy/firmalife",
+      "ref": "v2.1.28",
+      "commit": "a9d19b4347f93239919b011c4220f3e8a3f16951",
+      "dependency_file": "Firmalife-1.20.1-2.1.28.jar",
+      "version_relation": "installed-mod-version-matched; TFGM overrides not yet reconciled",
+      "status": "review-only",
+      "license_path": "LICENSE",
+      "license_review": "MIT",
+      "document_count": 60,
+      "documents": [
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/beekeeping.json",
+          "git_blob_sha1": "7ff9955143fdd98fde96efee08f7aa7ee439f563",
+          "bytes": 3695,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/berry_bushes.json",
+          "git_blob_sha1": "a3013b7f4fb97382797aab36c0840b8d1fd66e7e",
+          "bytes": 1927,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/bread.json",
+          "git_blob_sha1": "da1fd0ca72cebab5374bc14b5e920dafd12e4ae3",
+          "bytes": 1550,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/burritos_and_tacos.json",
+          "git_blob_sha1": "38285576d08feb045c0305cb025c18e71eade2af",
+          "bytes": 1684,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/cellar.json",
+          "git_blob_sha1": "22e8ab8a3416804156dd113d425cd88a0f5bb699",
+          "bytes": 1633,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/cheese.json",
+          "git_blob_sha1": "3ce647def68ab18dfb1e6e95ffff4574f132d032",
+          "bytes": 3743,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/chocolate.json",
+          "git_blob_sha1": "fee90e9c72657a1ec6ea296368bfa92657143241",
+          "bytes": 1566,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/climate_station.json",
+          "git_blob_sha1": "8d8139eb47363d5504803ed2aa5bf9a85aed3a22",
+          "bytes": 2480,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/differences_from_tfc.json",
+          "git_blob_sha1": "1245001e4e8fd0f326c8c68b4984ec51ed653c7f",
+          "bytes": 1230,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/drying.json",
+          "git_blob_sha1": "40b1d1a9b52e8f5046b1a975dc9c7476f0e79fbc",
+          "bytes": 1733,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/food_shelves.json",
+          "git_blob_sha1": "be1655e0cd1c56586e8684f8fadfae903ab06f08",
+          "bytes": 790,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/fruit_trees.json",
+          "git_blob_sha1": "909ac50e7b82ad66da2b131e057c44b8204cebe2",
+          "bytes": 4230,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/greenhouse.json",
+          "git_blob_sha1": "7a93cb7fc4fd216182aa61c095fc2c6c1003dc4a",
+          "bytes": 4086,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/hangers.json",
+          "git_blob_sha1": "b784d041f4107b54d3725460d2d97dab9cfff260",
+          "bytes": 790,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/herbs_and_spices.json",
+          "git_blob_sha1": "9bd88b2d40dbdcf785599eb84711dcd219ea8382",
+          "bytes": 2057,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/irrigation.json",
+          "git_blob_sha1": "804e3c97aa86bf528665788206a67854a3677867",
+          "bytes": 2608,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/jarbnet.json",
+          "git_blob_sha1": "9a513ee459258343f521fe7ea572fa08e04ce866",
+          "bytes": 662,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/mixing_bowl.json",
+          "git_blob_sha1": "d4de3973afd2dff4f697d8ce538509c09c5931f6",
+          "bytes": 621,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/more_fertilizer.json",
+          "git_blob_sha1": "eef6c4d2c0162259cf1c657b1a45b05fed5c5537",
+          "bytes": 2466,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/oven_appliances.json",
+          "git_blob_sha1": "fc3e6996e9cc962d5e5baf160ce80caf15333f5d",
+          "bytes": 3763,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/ovens.json",
+          "git_blob_sha1": "86c0c07b54bd5d3eebf5798bd2f869cdc34c9a8b",
+          "bytes": 6029,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/pasta.json",
+          "git_blob_sha1": "eadf289a5bc48c2e4a03e5d8ec8f30ac4bfb4e7f",
+          "bytes": 1295,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/pie.json",
+          "git_blob_sha1": "35122d1e7a28c975737771ad180df9e1368da7ff",
+          "bytes": 1679,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/pizza.json",
+          "git_blob_sha1": "5b8114f0c5c7ba9dc94162ddd070c86664de174c",
+          "bytes": 1288,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/planters.json",
+          "git_blob_sha1": "b6912656b9ec31b3284b2b06487d2650883d0dc1",
+          "bytes": 5177,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/smoking.json",
+          "git_blob_sha1": "b521f93f96923ffc17a8a544a77ede67a3f85056",
+          "bytes": 1752,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/stainless_steel.json",
+          "git_blob_sha1": "95de41211e437f0184387e18b8be04d93a1f01bb",
+          "bytes": 1318,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/wine.json",
+          "git_blob_sha1": "7b434ff8b4fba163cc5b4c354f5e5a3abedf802f",
+          "bytes": 5098,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/firmalife/wine_consumption.json",
+          "git_blob_sha1": "6de9b949f4675c8a90580e4e8b2b67035524a985",
+          "bytes": 1782,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/mechanics/bread.json",
+          "git_blob_sha1": "8be752bd6f4d61be2c0567834f87269ce7e8ac4f",
+          "bytes": 309,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/en_us/entries/mechanics/dairy.json",
+          "git_blob_sha1": "9ab6d71eb5bb5542d902f4df7f178f0e867f507a",
+          "bytes": 314,
+          "language": "en_us"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/beekeeping.json",
+          "git_blob_sha1": "6b942ef2925eda7234f67384dbba42faa4067198",
+          "bytes": 3500,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/berry_bushes.json",
+          "git_blob_sha1": "3c6feeb6f379210a95e41ed2be1a8b1393e619e7",
+          "bytes": 1889,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/bread.json",
+          "git_blob_sha1": "9a28c3690cd81172228617ced3e149575b8176b0",
+          "bytes": 1541,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/burritos_and_tacos.json",
+          "git_blob_sha1": "7cf701a393a13f05fd9c496b0fe162370ff13d4b",
+          "bytes": 1734,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/cellar.json",
+          "git_blob_sha1": "07d79bce5bde017bafbddabfa7f8b156715a6c3a",
+          "bytes": 1519,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/cheese.json",
+          "git_blob_sha1": "9f046c4129c1523981b8d8e58f4e707ef10c2ed5",
+          "bytes": 3742,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/chocolate.json",
+          "git_blob_sha1": "d8ffce830043c55a05ba9c8c2315a040fa1ef006",
+          "bytes": 1499,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/climate_station.json",
+          "git_blob_sha1": "178f61f85918d5f456b4050c6767b3788abc3d0a",
+          "bytes": 2352,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/differences_from_tfc.json",
+          "git_blob_sha1": "223b27d3176194bceb09fb426c09a9442c2a5fd5",
+          "bytes": 1202,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/drying.json",
+          "git_blob_sha1": "898b1c1c96e12e1e284e67fa806825f7997c39fc",
+          "bytes": 1740,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/food_shelves.json",
+          "git_blob_sha1": "d06353fe91917c3b23dacdb3c76fe3d86f63bcd5",
+          "bytes": 751,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/fruit_trees.json",
+          "git_blob_sha1": "32b337f3b50c0730cf32f709ed8d8bc7b16ef0cf",
+          "bytes": 4227,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/greenhouse.json",
+          "git_blob_sha1": "ac99d47fdb43ef63c8a6debed97b4f41134f8e1e",
+          "bytes": 3735,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/hangers.json",
+          "git_blob_sha1": "9cb382e785c6ebdfb16a2d56f0e9838c6e0eabba",
+          "bytes": 769,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/herbs_and_spices.json",
+          "git_blob_sha1": "6333a4ed15cc5ec9f24d2c694497db05d023bcb6",
+          "bytes": 1969,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/irrigation.json",
+          "git_blob_sha1": "e90e0292d1b70886c76ed354fb87d89effa4c074",
+          "bytes": 2452,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/jarbnet.json",
+          "git_blob_sha1": "1c7ac563daa5fdbfdf5fabb67208ed41466bf4f9",
+          "bytes": 641,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/mixing_bowl.json",
+          "git_blob_sha1": "4055ef4d4fe8e49acad7b61195d8dafaa4668ccc",
+          "bytes": 627,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/more_fertilizer.json",
+          "git_blob_sha1": "5d26d5e802e95c2cd00d3fe974fee8af3755f765",
+          "bytes": 2395,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/oven_appliances.json",
+          "git_blob_sha1": "4667503f61c488e8aa47807062f12eec2328d7a7",
+          "bytes": 3671,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/ovens.json",
+          "git_blob_sha1": "39e97e0e705c2c3f2d6f5db777cb396af6fae839",
+          "bytes": 5743,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/pasta.json",
+          "git_blob_sha1": "8a3476676558c475963580b2d437f46f1f021100",
+          "bytes": 1288,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/pie.json",
+          "git_blob_sha1": "1a99ea6d91974b4b411cb96f479ee6d38a1006d2",
+          "bytes": 1752,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/pizza.json",
+          "git_blob_sha1": "a0e6c640ca632aae334c120203187bd4f12182d8",
+          "bytes": 1231,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/planters.json",
+          "git_blob_sha1": "8ecffab8306ad763a124b7ddf7e621f378f1f9bb",
+          "bytes": 5112,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/smoking.json",
+          "git_blob_sha1": "d43706cde4ecc445f00d0d02c41295500d6f58ca",
+          "bytes": 1683,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/stainless_steel.json",
+          "git_blob_sha1": "bd4051501f6eaf7e44da42e735b0477f323aefbf",
+          "bytes": 1260,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/wine.json",
+          "git_blob_sha1": "f87754ace63a033dd974696b483d3e4acab5b61a",
+          "bytes": 4976,
+          "language": "zh_cn"
+        },
+        {
+          "path": "src/main/resources/assets/tfc/patchouli_books/field_guide/zh_cn/entries/firmalife/wine_consumption.json",
+          "git_blob_sha1": "d5a2314671cb9be559b5c530eedea30aefcfcd62",
+          "bytes": 1669,
+          "language": "zh_cn"
+        }
+      ],
+      "download_verification": "196 selected files downloaded locally; Git blob hashes verified"
+    },
+    {
+      "id": "ae2-uelm",
+      "repository": "AE2-Unofficial-Extended-Life-Modern/AE2-UELM",
+      "ref": "forge/v15.5.6-uelm",
+      "commit": "b5694f9e33c8c85cabfe6749b29298606e1e1419",
+      "dependency_file": "appliedenergistics2-forge-15.5.6-uelm.jar",
+      "version_relation": "installed-mod-version-matched; TFGM overrides not yet reconciled",
+      "status": "review-only",
+      "license_path": "README.md",
+      "license_review": "CC0-1.0 for Text and Translations; exclude textures, models and sounds with separate licenses",
+      "document_count": 120,
+      "documents": [
+        {
+          "path": "guidebook/ae2-mechanics/ae2-mechanics-index.md",
+          "git_blob_sha1": "fb8da7a42433ea4e35c363fa020a6e68843e67f8",
+          "bytes": 89,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/autocrafting.md",
+          "git_blob_sha1": "5149bcd6b3f883757cf2c6216eb09bd902e24c67",
+          "bytes": 13014,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/bytes-and-types.md",
+          "git_blob_sha1": "9a2c761d70a646a9fe5b79e4580da52c69c50b40",
+          "bytes": 4852,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/cable-subparts.md",
+          "git_blob_sha1": "d2c72e5fc11ea1120008c89afed9c31d7243103b",
+          "bytes": 635,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/certus-growth.md",
+          "git_blob_sha1": "f4d8bf330cb774d9c41c0773976b08b5c8ad53bd",
+          "bytes": 2307,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/channels.md",
+          "git_blob_sha1": "778450e51b534e110f71dd96be8376803510b09d",
+          "bytes": 15581,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/devices.md",
+          "git_blob_sha1": "9c0c6145ac613f2ddcc84299af4276069f1c2320",
+          "bytes": 539,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/energy.md",
+          "git_blob_sha1": "fa90930eb847951d9ef20ef45bbec96dca192d96",
+          "bytes": 3699,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/import-export-storage.md",
+          "git_blob_sha1": "eb10020c528efbaf893e5844d7e72ab9663a3813",
+          "bytes": 3956,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/me-network-connections.md",
+          "git_blob_sha1": "4e4a4ffd35944022002a56b8f2ca4d295383540e",
+          "bytes": 5454,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/meteorites.md",
+          "git_blob_sha1": "2e658f095b0c2b4784e3519d2e128ffaa9061647",
+          "bytes": 856,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/p2p-tunnels.md",
+          "git_blob_sha1": "307886d9511ece4b4475c994989615f429806172",
+          "bytes": 184,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/quantum-bridge.md",
+          "git_blob_sha1": "4d79b1dfd07f1846d3481d808e9133ab8d4dbb11",
+          "bytes": 215,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/spatial-io.md",
+          "git_blob_sha1": "1e3f8843771e2802de1954af80a740f123a1cc4e",
+          "bytes": 5404,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/ae2-mechanics/subnetworks.md",
+          "git_blob_sha1": "ac6963488e8668a1229286403f2711f69838d9cb",
+          "bytes": 3020,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/advanced-certus-farm.md",
+          "git_blob_sha1": "4d874d26168378eda98fd1dbc5ed40c4ff58b137",
+          "bytes": 7084,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/amethyst-farm.md",
+          "git_blob_sha1": "9fd5f01251b088f19f76e4e651cfcb026ec65bff",
+          "bytes": 4325,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/cell-dumper-filler.md",
+          "git_blob_sha1": "8328c1f39184675d408a1d2e53a6f23c6c597fdd",
+          "bytes": 3017,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/charger-automation.md",
+          "git_blob_sha1": "76e3f44848f17c14143e08a343da558da18b553d",
+          "bytes": 2497,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/example-setups-index.md",
+          "git_blob_sha1": "dfa4b60ac49f76f6cf4abc879fa54f184fc07098",
+          "bytes": 90,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/furnace-automation.md",
+          "git_blob_sha1": "af1bf3ac7602acd231abc5e24a18543c049a3220",
+          "bytes": 3751,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/interface-autostocking.md",
+          "git_blob_sha1": "0b4d2e401764138f8dc09181457956bc7fa0e442",
+          "bytes": 2298,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/level-emitter-autostocking.md",
+          "git_blob_sha1": "5b238d0cd288225b1cdedb06d834808ff94482e4",
+          "bytes": 2730,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/main-network.md",
+          "git_blob_sha1": "198daa4c07fe7fa0084ef4e25adc6f40d3b921e7",
+          "bytes": 2382,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/ore-fortuner.md",
+          "git_blob_sha1": "9d75090feb5e0bb40fb53eca619b80433d9add8b",
+          "bytes": 2673,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/pipe-subnet.md",
+          "git_blob_sha1": "039daeebe3f0c5b6d9156f84bb15e855669e6241",
+          "bytes": 8724,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/processor-automation.md",
+          "git_blob_sha1": "4062ad55ff84dd2bc987dd5222436f10386e964d",
+          "bytes": 9113,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/regulated-cobble-gen.md",
+          "git_blob_sha1": "90fd82adddac3daff136ebe4a226c304b3770610",
+          "bytes": 3913,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/semiauto-certus-farm.md",
+          "git_blob_sha1": "d064ed68d2d0fec2d1b0fa58e21b9f3208d69562",
+          "bytes": 6384,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/simple-certus-farm.md",
+          "git_blob_sha1": "87cae1373290386b6d5d682bd92e990304c9c59b",
+          "bytes": 3140,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/specialized-local-storage.md",
+          "git_blob_sha1": "d5d7d0c994bccfbe8ef8f09c2954ed12d4f262fb",
+          "bytes": 3768,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/example-setups/throw-in-water-automation.md",
+          "git_blob_sha1": "45c92c6e59139372904be6bf648f101d5d787d6c",
+          "bytes": 4279,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/getting-started.md",
+          "git_blob_sha1": "b38323858863e30acff0db90b9fe2ddd327d0d41",
+          "bytes": 9364,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/index.md",
+          "git_blob_sha1": "a0107ee369858932ac2a991b51cd261a03bb5b9b",
+          "bytes": 1485,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/annihilation_plane.md",
+          "git_blob_sha1": "b851fd83f28d7dd02d93787527fd333530d8ec93",
+          "bytes": 2451,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/budding_certus.md",
+          "git_blob_sha1": "17989b5ce4755a38afa09f9b82034cba8fef7f44",
+          "bytes": 2165,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/cable_anchor.md",
+          "git_blob_sha1": "258076e9aa5f3f300aa42f519f4d096f48c6bc18",
+          "bytes": 780,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/cables.md",
+          "git_blob_sha1": "503205e4cf3d3ad6856f5b2f68edc0493a3654cd",
+          "bytes": 7692,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/cell_workbench.md",
+          "git_blob_sha1": "629332ae174ffbfe366163fe44d35048a25fb3a8",
+          "bytes": 1083,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/certus_quartz_crystal.md",
+          "git_blob_sha1": "1e61dc7b25573eb277df5a9e31e777923282c875",
+          "bytes": 750,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/certus_quartz_crystal_charged.md",
+          "git_blob_sha1": "7b0b2873bd4d45b9b48d3226675bad0608095f8c",
+          "bytes": 647,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/certus_quartz_dust.md",
+          "git_blob_sha1": "20a40298f02bd744632a3f3d7a0ef8d6b9be9e35",
+          "bytes": 512,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/charged_staff.md",
+          "git_blob_sha1": "48805c22b9d0dd0b0f6908a4611d34d434e80d36",
+          "bytes": 505,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/charger.md",
+          "git_blob_sha1": "64c670f261e0f7c5e3faf8d3cf0c486fe8bf436a",
+          "bytes": 1451,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/chest.md",
+          "git_blob_sha1": "ab326a2fd7ffe163dc643649e57ee941a214a4fa",
+          "bytes": 3608,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/color_applicator.md",
+          "git_blob_sha1": "a9d57cf5d00fc7519f8f0578eee4572358b30c2e",
+          "bytes": 1514,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/condenser.md",
+          "git_blob_sha1": "2fe5d73c68b3ce1211e94cb2cdbe5caadbad6cb1",
+          "bytes": 1525,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/controller.md",
+          "git_blob_sha1": "2e08664faa9a7ad5c70b56da941e22b07ea0ee72",
+          "bytes": 1932,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/crafting_cpu_multiblock.md",
+          "git_blob_sha1": "b4d2195999796a9c407fa2877f56d2637e413ae6",
+          "bytes": 3971,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/crank.md",
+          "git_blob_sha1": "9593c780427bf7734f0a29fe3fae4664bc9b4e4c",
+          "bytes": 555,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/cutting_knives.md",
+          "git_blob_sha1": "095fb9dc5a71804e75602b92006aca8371074b01",
+          "bytes": 825,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/decorative_certus.md",
+          "git_blob_sha1": "030e60b8b8a1041b15597e9b209d96e7adc8ccdb",
+          "bytes": 2190,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/decorative_fluix.md",
+          "git_blob_sha1": "1c3c40528eb49ff64f1c2dc04fe8d47f2f73ff5f",
+          "bytes": 661,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/decorative_sky_stone.md",
+          "git_blob_sha1": "8ec09e3927ecae1fe986ae172f2fd4bb8c6a89f8",
+          "bytes": 1928,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/drive.md",
+          "git_blob_sha1": "f9305a50d6e9d2dd3d2dc193b426630095616ea4",
+          "bytes": 2262,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/ender_dust.md",
+          "git_blob_sha1": "29b086f549a5fc77a7af7fae21e5fcc2263441e6",
+          "bytes": 494,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/energy_acceptor.md",
+          "git_blob_sha1": "6b8910abd14beb2625f82e3b222233e1aa65c7f7",
+          "bytes": 1348,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/energy_cells.md",
+          "git_blob_sha1": "8260b2245bf8ec6dc50bc2c36141483cbfbb12cd",
+          "bytes": 2125,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/entropy_manipulator.md",
+          "git_blob_sha1": "ea57520738ddde7c45b1586ec4de1998c11a08d7",
+          "bytes": 770,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/export_bus.md",
+          "git_blob_sha1": "461c0f03c8532cf78cea8f195c0a9457df4636c4",
+          "bytes": 2466,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/facades.md",
+          "git_blob_sha1": "7d32459b12498b135cd749eb4124c8ecb7b745bb",
+          "bytes": 1486,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/fluix_block.md",
+          "git_blob_sha1": "6237976f9e0c6dd7921958a58f292bdd5310e3a8",
+          "bytes": 418,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/fluix_crystal.md",
+          "git_blob_sha1": "fff7f1465893da835e2b726440aacf5d79ccc4cd",
+          "bytes": 955,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/fluix_dust.md",
+          "git_blob_sha1": "b7ebcf41775b69afd28689a4225bb340d663de8e",
+          "bytes": 492,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/fluix_pearl.md",
+          "git_blob_sha1": "36069ce169f17842be2865495b0c916348da30b2",
+          "bytes": 415,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/fluix_tools.md",
+          "git_blob_sha1": "5c3d04c7fdac4c40a8f3de1f443f78e35b69360d",
+          "bytes": 1093,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/fluix_upgrade_smithing_template.md",
+          "git_blob_sha1": "c75603488a16c4e32629ce250e635d21cbd81bfd",
+          "bytes": 510,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/formation_annihilation_core.md",
+          "git_blob_sha1": "f4672994d6595eb025cfea5887c42a640f5f9ab8",
+          "bytes": 793,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/formation_plane.md",
+          "git_blob_sha1": "067a187ba3d58c7f7885d51852bf8e5a9b27e409",
+          "bytes": 2327,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/growth_accelerator.md",
+          "git_blob_sha1": "7d41b6eda251a6078f22284fdb9f17c29fa01c61",
+          "bytes": 1098,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/guide.md",
+          "git_blob_sha1": "026b42081d1e8e8420d01f06369b37c6d69a7125",
+          "bytes": 642,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/illuminated_panels.md",
+          "git_blob_sha1": "9890eda458c0159aef3ff5b1abb0ed3ba2d86ad2",
+          "bytes": 766,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/import_bus.md",
+          "git_blob_sha1": "d355945d5d31793456d5b79a0e81e32e818fb6d3",
+          "bytes": 2218,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/inscriber.md",
+          "git_blob_sha1": "0cdb31cbaef009b75af7de02e0e2b1f53243bd87",
+          "bytes": 3329,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/interface.md",
+          "git_blob_sha1": "55a3e2cc49463faa56321008701c06d1e752f09e",
+          "bytes": 6567,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/io_port.md",
+          "git_blob_sha1": "fdb440194233ed2e4f68b73d8da522e05a8a7dee",
+          "bytes": 1270,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/items-blocks-machines-index.md",
+          "git_blob_sha1": "ba268334bfe646db7d806048288a11180c823ccd",
+          "bytes": 510,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/level_emitter.md",
+          "git_blob_sha1": "7bd1a98d20e5a88b5d6099d7d7be7a76db48c3ed",
+          "bytes": 3191,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/matter_ball.md",
+          "git_blob_sha1": "7ac2f80195dd1649c79fc0ddf63669f3f2d9bbd1",
+          "bytes": 482,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/matter_cannon.md",
+          "git_blob_sha1": "dcd20fd07e015756043c0d45c934829b95ccb870",
+          "bytes": 1655,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/memory_card.md",
+          "git_blob_sha1": "9b5ac9848f898d9ed95fbbefbe65755d8b36a25a",
+          "bytes": 655,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/meteorite_compass.md",
+          "git_blob_sha1": "d3945761babd3d7dcb1ce04beddc76fb92ec4aef",
+          "bytes": 538,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/molecular_assembler.md",
+          "git_blob_sha1": "e319c5a008c339649b044d7368b1cc35e4c5b326",
+          "bytes": 1963,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/monitors.md",
+          "git_blob_sha1": "400c9133ce5fb65394a56046fd549dd975600660",
+          "bytes": 1925,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/mysterious_cube.md",
+          "git_blob_sha1": "be729ea465d39af47f93911ba4efd78c9325b650",
+          "bytes": 621,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/network_tool.md",
+          "git_blob_sha1": "4167ff33c7f62fe5f6ebf991e89606c854460672",
+          "bytes": 1699,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/p2p_tunnels.md",
+          "git_blob_sha1": "c31f5c7ad3bb93ce067b20a0072be64a08faa667",
+          "bytes": 5806,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/paintballs.md",
+          "git_blob_sha1": "20b51f2372e50e4930490e7221b2d152d8653a23",
+          "bytes": 2772,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/pattern_provider.md",
+          "git_blob_sha1": "d8ea3d439f0507da89b8abd5b4b0e3e7927b4407",
+          "bytes": 8339,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/patterns.md",
+          "git_blob_sha1": "d6bc8a88b0e40a7169dbf97c0a889b130e35b072",
+          "bytes": 3386,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/presses.md",
+          "git_blob_sha1": "39c739191f1a49083035f99332935eb5e07e4986",
+          "bytes": 1771,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/processors.md",
+          "git_blob_sha1": "1cfa95be008420597b55378e155e14b387517a9a",
+          "bytes": 1717,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/quantum_bridge.md",
+          "git_blob_sha1": "ff5f3eea9f0b569b9d4f0f752b135fa3dbc7b1d3",
+          "bytes": 2165,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/quartz_block.md",
+          "git_blob_sha1": "955c69acaf6cb742a1e8456d55831a588105489a",
+          "bytes": 511,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/quartz_fiber.md",
+          "git_blob_sha1": "c1b9e6bf15dff7b384d8dfa36b4119f9056d610c",
+          "bytes": 943,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/quartz_fixture.md",
+          "git_blob_sha1": "456a73015ba266cdefe6632ff17a813f1c5ac2ea",
+          "bytes": 613,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/quartz_glass.md",
+          "git_blob_sha1": "40b5261ba333d2ea5683b33fa254a4c889c86df8",
+          "bytes": 553,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/quartz_tools.md",
+          "git_blob_sha1": "e01e004218ca1c74e030cc393f3340630fd8d815",
+          "bytes": 1717,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/singularities.md",
+          "git_blob_sha1": "31fdcb4a9dcdabb34ed490033f0b1dac4a614e8f",
+          "bytes": 1306,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/sky_dust.md",
+          "git_blob_sha1": "1e43869669e80d63def9b6e605ab15af6aa79ec3",
+          "bytes": 607,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/sky_stone.md",
+          "git_blob_sha1": "51b3aa2528deef785aede16b0dd7b5d68f2082f1",
+          "bytes": 746,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/sky_stone_tank.md",
+          "git_blob_sha1": "5c614fad10d4403b4dbd29f88f71fcfa3c7a4f92",
+          "bytes": 433,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/spatial_anchor.md",
+          "git_blob_sha1": "64eafd25d224b53ccfbc5803308d8747ef37bb17",
+          "bytes": 1510,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/spatial_cells.md",
+          "git_blob_sha1": "10bc0c94d249053de608e7e9b405233cdb85afcc",
+          "bytes": 1930,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/spatial_io_port.md",
+          "git_blob_sha1": "2335baf47522dc19b82ff810cf79d9fefcd4fc69",
+          "bytes": 614,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/spatial_pylon.md",
+          "git_blob_sha1": "8c2333c87ef5b89d585254e5fe25300c9d7a861a",
+          "bytes": 609,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/storage_bus.md",
+          "git_blob_sha1": "ce8f47330a61c98c2e9ce60df2b1cca56928ec66",
+          "bytes": 3436,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/storage_cells.md",
+          "git_blob_sha1": "b9ab1b50301a4e5ea6a98aa57f5c08c04c730868",
+          "bytes": 7756,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/super_me_replenisher.md",
+          "git_blob_sha1": "4a049b0ea1d47ecf740c026c107e0d8223879c0c",
+          "bytes": 2007,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/terminals.md",
+          "git_blob_sha1": "faffa1edd5ae8cd727d2f83da1901e8e2b6d82e6",
+          "bytes": 9626,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/tiny_tnt.md",
+          "git_blob_sha1": "905d0770096988ea5a564189633d5505fc24cb50",
+          "bytes": 571,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/toggle_bus.md",
+          "git_blob_sha1": "85486c7f5e37301084eeec4787a05834b3c222d3",
+          "bytes": 1074,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/upgrade_cards.md",
+          "git_blob_sha1": "5b7507795672bb5492c95a0ed46c5ebff00f9699",
+          "bytes": 6304,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/vibration_chamber.md",
+          "git_blob_sha1": "cc1f9369551f9f150ddc3d7b0dac7a8957fb0f03",
+          "bytes": 1785,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/view_cell.md",
+          "git_blob_sha1": "4e110b264cc6f95f1af650e8d995d6e6311670a6",
+          "bytes": 822,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/wireless_access_point.md",
+          "git_blob_sha1": "a878f82dc97ab1b109267e15112fbd3660e14281",
+          "bytes": 1046,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/wireless_receiver.md",
+          "git_blob_sha1": "6a13d93ea12ca4861a214f3a41ada0e1c3f68295",
+          "bytes": 447,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/wireless_terminals.md",
+          "git_blob_sha1": "2bb69cedb1debae181984c82f7953b4deca5da2c",
+          "bytes": 2310,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/items-blocks-machines/wrench.md",
+          "git_blob_sha1": "c43d66735a00a99b147b51f124f03ad14f877b70",
+          "bytes": 874,
+          "language": "en_us"
+        },
+        {
+          "path": "guidebook/tips-and-tricks.md",
+          "git_blob_sha1": "30a6ffd4c6d87cb2cbe7cc2a24a74374ea2abece",
+          "bytes": 2374,
+          "language": "en_us"
+        }
+      ],
+      "download_verification": "196 selected files downloaded locally; Git blob hashes verified"
+    }
+  ]
+}
