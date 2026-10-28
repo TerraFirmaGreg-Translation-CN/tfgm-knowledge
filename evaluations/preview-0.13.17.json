@@ -1,0 +1,10 @@
+[
+  {"question":"锻铁炉只能烧什么燃料？每块生铁方坯要多少木炭？","expected_titles":["锻铁炉"],"evidence_terms":["木炭"]},
+  {"question":"为什么喝盐水之后反而更渴？","expected_titles":["营养素与口渴值"],"evidence_terms":["盐水"]},
+  {"question":"怎么搭建木炭堆并烧制木炭？","expected_titles":["烧制木炭","木炭炉"],"evidence_terms":["木炭"]},
+  {"question":"蒸汽锅炉断水后再加水会发生什么？","expected_titles":["蒸汽锅炉"],"evidence_terms":["爆炸","水"]},
+  {"question":"赛特斯石英矿石应该去哪里找？","expected_titles":["赛特斯石英"],"evidence_terms":["月球"]},
+  {"question":"如何制作耐火黏土，需要哪些原料？","expected_titles":["耐火黏土","耐火黏土原料"],"evidence_terms":["高岭","石墨"]},
+  {"question":"玩家的营养和污染物在死亡后会重置吗？","expected_titles":["营养素与口渴值"],"evidence_terms":["死亡"]},
+  {"question":"背包里物品太重会有什么影响？","expected_titles":["体积与重量"],"evidence_terms":["负担","重量"]}
+]

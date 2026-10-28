@@ -115,3 +115,14 @@ bun run mode:help
 ```
 
 账户、模型配置、资源限制及清理策略见 [本地开发说明](docs/local-infra.md)。此环境与生产独立；基础设施启动后仍需配置 embedding 模型并选择文档入库。
+
+## 按版本链接导入 RAGFlow
+
+玩家文档知识包已支持固定流程：构建 → GitHub Release → manifest 链接校验导入 → 检索验收。首次预览默认 48 篇，完整包单独导入，模型和密钥留在本地。
+
+```bash
+bun run knowledge:connect
+bun run knowledge:import --url https://github.com/TerraFirmaGreg-Translation-CN/tfgm-knowledge/releases/download/tfgm-0.13.17-r1/manifest.json
+```
+
+详见 [版本化玩家知识库流程](docs/player-knowledge.md)。

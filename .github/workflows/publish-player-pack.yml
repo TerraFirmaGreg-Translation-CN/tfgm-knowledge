@@ -1,0 +1,46 @@
+name: Publish player knowledge pack
+on:
+  workflow_dispatch:
+    inputs:
+      game_version:
+        description: 'Exact TFG Modern release (e.g. 0.13.17)'
+        required: true
+        default: '0.13.17'
+      revision:
+        description: 'New knowledge revision; never overwrite a published release'
+        required: true
+        default: 'r1'
+permissions:
+  contents: write
+concurrency:
+  group: publish-player-pack
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GAME_VERSION: ${{ inputs.game_version }}
+      PACK_REVISION: ${{ inputs.revision }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+      - run: python -m tfgm_knowledge update --version "$GAME_VERSION"
+      - run: python -m tfgm_knowledge.knowledge_cli build --revision "$PACK_REVISION"
+      - name: Publish immutable release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="tfgm-${GAME_VERSION}-${PACK_REVISION}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo 'Release already exists; choose a new revision.' >&2
+            exit 1
+          fi
+          gh release create "$tag" \
+            "dist/player-releases/$tag/manifest.json" \
+            "dist/player-releases/$tag/$tag-zh_cn.zip" \
+            --target "$GITHUB_SHA" --prerelease \
+            --title "$tag 中文玩家知识包" --notes-file docs/player-release-notes.md

@@ -8,6 +8,11 @@
     "mode:health": "python3 scripts/mode.py health",
     "mode:logs": "python3 scripts/mode.py logs",
     "mode:help": "python3 scripts/mode.py help",
-    "mode:clean": "python3 scripts/mode.py clean"
+    "mode:clean": "python3 scripts/mode.py clean",
+    "knowledge:build": "python3 -m tfgm_knowledge.knowledge_cli build",
+    "knowledge:import": "python3 -m tfgm_knowledge.knowledge_cli import",
+    "knowledge:connect": "python3 -m tfgm_knowledge.knowledge_cli connect",
+    "knowledge:query": "python3 -m tfgm_knowledge.knowledge_cli query",
+    "knowledge:evaluate": "python3 -m tfgm_knowledge.knowledge_cli evaluate"
   }
 }
