@@ -18,7 +18,7 @@ bun run mode:stop
 
 证书在 `.local/certs/cert.pem`，浏览器首次访问会提示自签证书。脚本不会修改系统信任库。可将此证书导入浏览器的受信任证书列表；各设备需要分别导入。健康探测显式信任此证书并验证主机名和实例响应头，没有禁用 TLS 验证。网卡地址变化后，停止再启动会更新证书。
 
-管理员邮箱为 `admin@ragflow.io`，随机密码保存在 `.local/credentials.json` 的 `admin` 字段；用本地编辑器查看，不要提交或发送该文件。首次启动先在容器内使用官方管理 API 设置并验证随机密码，再发布 HTTPS；该版本的 `ADMIN_DEFAULT_PASSWORD` 环境变量未被初始化代码采用，因此不依赖它。关闭公共注册。数据库和对象存储端口不发布到宿主机，只有 HTTPS 对外开放。
+日常知识库账户为 `developer@tfgm.local`，随机密码保存在 `.local/credentials.json` 的 `user` 字段（邮箱也保存在 `user_email` 字段）。管理员 `admin@ragflow.io` 的密码在 `admin` 字段，仅用于后台管理；该版本禁止超级管理员访问普通工作区接口，不能用它登录日常知识库页面。用本地编辑器查看凭据，不要提交或发送该文件。首次启动先在容器内使用官方管理 API 设置并验证随机密码，再发布 HTTPS；该版本的 `ADMIN_DEFAULT_PASSWORD` 环境变量未被初始化代码采用，因此不依赖它。关闭公共注册。数据库和对象存储端口不发布到宿主机，只有 HTTPS 对外开放。
 
 ## 组件和资源
 
@@ -81,3 +81,7 @@ mode:health     检查真实服务健康，失败返回非零
 ```
 
 通过 16 项单元测试和 6 个来源配置校验。实测 PTY 语义颜色、NO_COLOR、FORCE_COLOR、重定向纯文本和 JSON 可解析；40/80 列及停止/异常状态使用渲染夹具验证。实测本机/局域网 HTTPS、前端静态资源、管理员随机密码登录、上游默认密码拒绝、未信任证书和错误 SAN 拒绝、stop/start 后账户数据保留。后端返回 db、redis、doc_engine、storage、message_queue 全部 `ok`。尚未配置 embedding 模型或进行文档检索质量评估。
+
+### 403 / Super user should not access the URL
+
+若使用管理员登录普通页面，模型配置和首页统计会返回 403，前端还可能显示读取 `chats` 的错误。退出该账户，使用 `developer@tfgm.local` 登录；页面无法退出时可先用无痕窗口打开同一地址。`mode:start` 会将旧的仅管理员初始化记录迁移为双账户，并验证普通账户可读取模型配置、数据集、统计及聊天列表（含 `chats` 字段），全部成功才记录完成。不会重置已有同名账户密码。此修复已通过局域网 HTTPS 接口验收和 17 项单元测试。

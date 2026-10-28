@@ -304,7 +304,8 @@ def bootstrap_admin():
     if marker.exists():
         if read(marker).get('repoKey') != KEY:
             raise RuntimeError('管理员初始化记录归属错误')
-        return
+        if read(marker).get('version') == 2:
+            return
     cs = containers()
     app = next(x for x in cs if x['Config']['Labels']['dev.tfgm.service'] == 'ragflow')
     container_id = app['Id']
@@ -314,10 +315,11 @@ def bootstrap_admin():
         p = subprocess.run(['openssl', 'pkeyutl', '-encrypt', '-pubin', '-inkey', str(keypath), '-pkeyopt', 'rsa_padding_mode:pkcs1'],
                            input=base64.b64encode(password.encode()), capture_output=True, check=True)
         return base64.b64encode(p.stdout).decode()
-    def request(path, data, token=None, method='POST'):
+    def request(path, data=None, token=None, method='POST', admin=True):
         # Pass auth and body on stdin, never in argv, logs or error messages.
-        options = {'url': 'http://127.0.0.1:9381/api/v1/admin' + path, 'request': method,
-                   'data': json.dumps(data), 'header': 'Content-Type: application/json'}
+        base = 'http://127.0.0.1:9381/api/v1/admin' if admin else 'http://127.0.0.1:9380/api/v1'
+        options = {'url': base + path, 'request': method, 'header': 'Content-Type: application/json'}
+        if data is not None: options['data'] = json.dumps(data)
         cfg = '\n'.join(k + ' = ' + json.dumps(v) for k, v in options.items()) + '\n'
         if token: cfg += 'header = ' + json.dumps('Authorization: ' + token) + '\n'
         p = subprocess.run(['docker', 'exec', '-i', container_id, 'curl', '-sS', '--max-time', '15', '-i', '--config', '-'], input=cfg, capture_output=True, text=True)
@@ -338,7 +340,28 @@ def bootstrap_admin():
         data, token = request('/login', {'email': 'admin@ragflow.io', 'password': encrypt(password)})
     if data.get('code') != 0 or not token:
         raise RuntimeError('新管理员密码验证失败，入口保持关闭')
-    write(marker, {'repoKey': KEY, 'initializedAt': time.time()})
+    # Superusers are deliberately excluded from normal workspace APIs in this release.
+    credentials = read(LOCAL / 'credentials.json')
+    if 'user' not in credentials:
+        credentials.update(user=secrets.token_hex(24), user_email='developer@tfgm.local')
+        write(LOCAL / 'credentials.json', credentials)
+    email = credentials['user_email']
+    login = {'email': email, 'password': encrypt(credentials['user'])}
+    user, user_token = request('/auth/login', login, admin=False)
+    if user.get('code') != 0:
+        created, _ = request('/users', {'username': email, 'password': encrypt(credentials['user']), 'role': 'user'}, token)
+        if created.get('code') != 0:
+            raise RuntimeError('开发账户创建失败；已有同名账户时请核对本地凭据，不会重置其密码')
+        user, user_token = request('/auth/login', login, admin=False)
+    if user.get('code') != 0 or not user_token:
+        raise RuntimeError('开发账户登录失败')
+    for endpoint in ['/users/me/models', '/datasets', '/system/stats', '/chats']:
+        result, _ = request(endpoint, token=user_token, method='GET', admin=False)
+        if result.get('code') != 0 or result.get('data') is None:
+            raise RuntimeError('开发账户无权读取工作区接口：' + endpoint)
+        if endpoint == '/chats' and not isinstance(result['data'].get('chats'), list):
+            raise RuntimeError('聊天列表接口缺少 chats 数据')
+    write(marker, {'version': 2, 'repoKey': KEY, 'initializedAt': time.time()})
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -484,7 +507,7 @@ def main():
         elif args.command == 'start':
             if c:
                 existing = status(c)
-                if existing['state'] == 'healthy' and (LOCAL / 'admin-initialized.json').exists():
+                if existing['state'] == 'healthy' and read(LOCAL / 'admin-initialized.json', {}).get('version') == 2:
                     emit('status', existing)
                     return 0
             c = prepare()
@@ -502,7 +525,7 @@ def main():
             for attempt in range(32):
                 result = compose('up', '-d', '--wait', '--wait-timeout', '600', 'ragflow', check=False, timeout=660)
                 if result.returncode == 0:
-                    step('内部初始化管理员随机密码，再开放 HTTPS')
+                    step('初始化管理员与开发账户，验证工作区权限后开放 HTTPS')
                     bootstrap_admin()
                     result = compose('up', '-d', 'https', check=False, timeout=90)
                 if result.returncode == 0:

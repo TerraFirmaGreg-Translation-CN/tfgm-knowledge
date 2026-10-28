@@ -76,3 +76,32 @@ class ModeTests(unittest.TestCase):
             with patch.object(mode,'containers',return_value=[fake_container]), patch.object(mode,'run',return_value=SimpleNamespace(stdout='public-key')), patch.object(mode.subprocess,'run',side_effect=fake_process):
                 with self.assertRaisesRegex(RuntimeError,'管理员初始化失败'):mode.bootstrap_admin()
             self.assertFalse((Path(tmp)/'admin-initialized.json').exists())
+
+    def test_workspace_account_migration_checks_authorization(self):
+        import json
+        from types import SimpleNamespace
+        for workspace_code in [0, 403]:
+            with self.subTest(workspace_code=workspace_code), tempfile.TemporaryDirectory() as tmp, patch.object(mode,'LOCAL',Path(tmp)), patch.object(mode,'GENERATED',Path(tmp)):
+                mode.write(Path(tmp)/'credentials.json',{'admin':'admin-secret'})
+                marker=Path(tmp)/'admin-initialized.json'
+                mode.write(marker,{'repoKey':mode.KEY})
+                codes=iter([0,109,0,0,workspace_code,0,0,0])
+                requests=[]
+                def fake_process(argv, **kwargs):
+                    if argv[0]=='openssl':return SimpleNamespace(stdout=b'encrypted')
+                    requests.append(kwargs['input'])
+                    code=next(codes)
+                    return SimpleNamespace(returncode=0,stdout='HTTP/1.1 200 OK\nAuthorization: test-token\n\n'+json.dumps({'code':code,'data':{'chats':[]}}))
+                with patch.object(mode,'containers',return_value=[{'Id':'owned','Config':{'Labels':{'dev.tfgm.service':'ragflow'}}}]), patch.object(mode,'run',return_value=SimpleNamespace(stdout='public')), patch.object(mode.subprocess,'run',side_effect=fake_process):
+                    if workspace_code:
+                        with self.assertRaisesRegex(RuntimeError,'无权读取'):mode.bootstrap_admin()
+                        self.assertNotEqual(mode.read(marker).get('version'),2)
+                    else:
+                        mode.bootstrap_admin()
+                        self.assertEqual(mode.read(marker)['version'],2)
+                        self.assertEqual(len(requests),8)
+                payload=json.loads(next(line.split(' = ',1)[1] for line in requests[2].splitlines() if line.startswith('data = ')))
+                self.assertEqual(json.loads(payload)['role'],'user')
+                credentials=mode.read(Path(tmp)/'credentials.json')
+                self.assertEqual(credentials['admin'],'admin-secret')
+                self.assertIn('user',credentials)
