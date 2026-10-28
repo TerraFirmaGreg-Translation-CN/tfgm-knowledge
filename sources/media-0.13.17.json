@@ -1,0 +1,8 @@
+{
+  "game_version": "0.13.17",
+  "release_tag": "site-fg-0.13.17-a6e3628",
+  "url": "https://github.com/TerraFirmaGreg-Team/Field-Guide-Modern/releases/download/site-fg-0.13.17-a6e3628/field-guide-site.tar.gz",
+  "sha256": "4fa85d54b40b1736889970ca1c3541ebbced0c0f18e359eb70b64e52c83170e8",
+  "scope": "official field-guide runtime export subset",
+  "license_note": "保留来源；图片涉及原模组资产，当前仅供本地验证，发布媒体前逐项核对授权范围。"
+}

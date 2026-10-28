@@ -13,6 +13,8 @@
     "knowledge:import": "python3 -m tfgm_knowledge.knowledge_cli import",
     "knowledge:connect": "python3 -m tfgm_knowledge.knowledge_cli connect",
     "knowledge:query": "python3 -m tfgm_knowledge.knowledge_cli query",
-    "knowledge:evaluate": "python3 -m tfgm_knowledge.knowledge_cli evaluate"
+    "knowledge:evaluate": "python3 -m tfgm_knowledge.knowledge_cli evaluate",
+    "knowledge:recipe": "python3 -m tfgm_knowledge.knowledge_cli recipe",
+    "knowledge:media-preview": "python3 -m tfgm_knowledge.knowledge_cli media-preview"
   }
 }

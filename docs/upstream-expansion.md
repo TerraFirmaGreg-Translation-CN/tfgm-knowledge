@@ -26,7 +26,7 @@ GT 的 `docs/LICENSE` 是 CC0-1.0，不能只沿用仓库代码许可证；Firma
 2. **Core 与配置中的机制证据。** 继续按问题提取营养、温度、重量、环境等规则，并记录代码位置、配置覆盖和版本。代码留在分析层，只有核验过的规则摘要进入问答层。
 3. **官方在线野外手册。** [build.json](https://wiki.terrafirmagreg.team/modern/field-guide/build.json) 已为 0.13.17，发布标签 `site-fg-0.13.17-a6e3628`，可用于校验渲染结果及图示。已有整合包中英文手册各 95 个 entry；英文额外文件主要是模板，不能计为漏采正文。站点多语言页面数也不能计为独立知识量。
 4. **官方在线任务书。** [build.json](https://wiki.terrafirmagreg.team/modern/quest-book/build.json) 为 0.13.17，适合作为已有任务正文与依赖关系的交叉校验，不重复导入一整套相同内容。
-5. **官方配方书。** [build.json](https://wiki.terrafirmagreg.team/modern/recipe-book/build.json) 本轮仍为 0.13.15。保留来源与版本记录，不能作为 0.13.17 精确配方依据。精确配方需要同版本运行时 EMI 导出。
+5. **官方配方书。** [build.json](https://wiki.terrafirmagreg.team/modern/recipe-book/build.json) 本轮仍为 0.13.15。保留来源与版本记录，不能作为 0.13.17 精确配方依据。精确配方需要同版本运行时 EMI 导出。后续实施发现 0.13.17 野外手册附件已携带 132 条手册引用的 EMI 展示导出及配方图，已用于[本地图文试验](media-knowledge.md)；它不是全量配方库，也不包含全部执行条件。
 
 ## 第二批候选与限制
 

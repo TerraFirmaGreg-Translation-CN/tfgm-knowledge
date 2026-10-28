@@ -11,10 +11,19 @@ def retrieve(config,report,question):
     data,_=client.call('POST','/retrieval',{'dataset_ids':[report['dataset_id']],'question':question,'page_size':5,'similarity_threshold':0.1,'vector_similarity_weight':0.7,'keyword':False})
     mapping={d['document_id']:d for d in report['documents'].values()}
     results=[]
+    media_dir=Path(report['media_directory']) if report.get('media_directory') else None
+    media=json.loads((media_dir/'media.json').read_text()) if media_dir else None
     for chunk in data.get('chunks',[]):
         document=mapping.get(chunk.get('document_id'))
         if not document:raise ValueError('检索结果来自知识包之外的文档')
         results.append({'title':document['title'],'source_url':document['source_url'],'content':chunk['content'],'score':chunk.get('similarity'),'document_id':chunk['document_id']})
+        if media is not None:
+            from .media import image_reference
+            relation=document.get('media',{})
+            results[-1]['images']=[image_reference(x,media,media_dir) for x in relation.get('images',[])]
+            results[-1]['structures']=[media['structures'][x['id']] for x in relation.get('structures',[])]
+            results[-1]['recipes']=[{**media['recipes'][rid], 'image':image_reference(media['recipes'][rid]['image'],media,media_dir) if media['recipes'][rid].get('image') else None} for rid in relation.get('recipes',[])]
+            results[-1]['unresolved_recipes']=relation.get('unresolved_recipes',[])
     return results
 
 

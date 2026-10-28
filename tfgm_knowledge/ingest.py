@@ -52,16 +52,23 @@ def validate_pack(manifest, archive):
             contents[d['id']]=value
         if json.loads(z.read('documents.json'))!=docs:raise ValueError('包内文档清单与发布清单不同')
     if not set(manifest['preview_ids'])<=set(contents):raise ValueError('预览引用了不存在的文档')
+    from .media import validate_media
+    validate_media(manifest, archive)
     return contents
 
-def load_pack(location):
+def load_archive(location):
     if location.startswith('https://'):
         manifest=json.loads(fetch(location,8*1024**2)); archive=fetch(manifest['archive']['url'],32*1024**2)
     else:
         path=Path(location);manifest=json.loads(path.read_text())
         name=Path(urllib.parse.urlparse(manifest['archive']['url']).path).name
         archive=(path.parent/name).read_bytes()
-    return manifest,validate_pack(manifest,archive)
+    validate_pack(manifest, archive)
+    return manifest, archive
+
+def load_pack(location):
+    manifest, archive = load_archive(location)
+    return manifest, validate_pack(manifest, archive)
 
 def save(path,data):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
@@ -83,7 +90,11 @@ def remote_content(client,dataset_id,document_id):
     with client.opener.open(request,timeout=120) as r:return r.read(1024**2+1)
 
 def import_pack(location,config_path,profile='preview',timeout=900,retry_failed=False):
-    manifest,contents=load_pack(location) # No mutation before every checksum is verified.
+    manifest,archive=load_archive(location) # No mutation before every checksum is verified.
+    contents=validate_pack(manifest,archive)
+    from .media import cache_media
+    media_dir=cache_media(manifest,archive,Path(config_path).parent/'media')
+    media=json.loads((media_dir/'media.json').read_text()) if media_dir else None
     config=json.loads(Path(config_path).read_text());client=Client.configured(config_path)
     selected=[d for d in manifest['documents'] if profile=='full' or d['id'] in manifest['preview_ids']]
     if profile not in ('preview','full'):raise ValueError('未知导入范围')
@@ -103,6 +114,7 @@ def import_pack(location,config_path,profile='preview',timeout=900,retry_failed=
         ds=dataset['id'];base=f'/datasets/{ds}/documents'
         report_path=state_dir/(identity+'-'+target+'.json')
         report={'package_id':manifest['package_id'],'archive_sha256':manifest['archive']['sha256'],'manifest_url':location,'profile':profile,'dataset_id':ds,'dataset_name':name,'embedding_model':config['embedding_model'],'expected_documents':len(selected),'ready':False,'documents':{}}
+        if media_dir: report['media_directory']=str(media_dir)
         save(report_path,report)
         remote=listing(client,base,'docs'); names={}
         for d in remote:
@@ -118,6 +130,8 @@ def import_pack(location,config_path,profile='preview',timeout=900,retry_failed=
                 if len(uploaded)!=1:raise RuntimeError('上传响应不完整')
                 d=uploaded[0]
             report['documents'][document['id']]={'document_id':d['id'],'name':filename,'title':document['title'],'source_url':document['source_url'],'sha256':document['sha256']}
+            if media:
+                report['documents'][document['id']]['media']=media['documents'].get(document['id'],{})
             save(report_path,report)
             if (i+1)%12==0:print(f'文档已核对/上传：{i+1}/{len(selected)}',flush=True)
         expected={v['document_id'] for v in report['documents'].values()}

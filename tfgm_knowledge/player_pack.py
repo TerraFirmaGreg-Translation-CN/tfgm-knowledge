@@ -53,7 +53,7 @@ def player_text(record, quests):
     text = re.sub(r'^---\n.*?\n---\n', '', record['text'], count=1, flags=re.S)
     return plain(text)
 
-def build_pack(bundle, output, revision='r1', repository='TerraFirmaGreg-Translation-CN/tfgm-knowledge'):
+def build_pack(bundle, output, revision='r1', repository='TerraFirmaGreg-Translation-CN/tfgm-knowledge', media_site=None, media_source=None):
     bundle, output = Path(bundle), Path(output)
     source_manifest = json.loads((bundle/'manifest.json').read_text())
     version = source_manifest['modpack_version']
@@ -61,11 +61,25 @@ def build_pack(bundle, output, revision='r1', repository='TerraFirmaGreg-Transla
     package_id = f'tfgm-{version}-{revision}'
     with (bundle/'records.jsonl').open() as stream:
         records = [json.loads(line) for line in stream]
+    media_files, media = {}, None
+    if bool(media_site) != bool(media_source): raise ValueError('媒体附件和来源清单必须同时指定')
+    if media_site:
+        from .media import prepare_media
+        media_files, media = prepare_media(bundle, records, media_site, media_source)
     selected = [r for r in records if r['language']=='zh_cn' and r['kind'] in ['quest','field-guide','document']]
     quests = {r['data']['quest_id']:r['title'] for r in selected if r['kind']=='quest'}
     files, documents, skipped, references = {}, [], [], []
     for r in sorted(selected,key=lambda r:r['id']):
         body = player_text(r,quests)
+        relation = media['documents'].get(r['id']) if media else None
+        if relation:
+            body = (body or '') + '\n\n## 关联图示与配方\n\n'
+            for item in relation['images']:
+                body += f"第 {item['page']} 页：{item['caption']}；图片路径：{item['path']}\n\n"
+            for item in relation['structures']:
+                body += f"结构：{item['caption']}；结构记录：{item['id']}\n\n"
+            if relation['recipes']: body += '同版本配方 ID：' + '、'.join(relation['recipes']) + '\n'
+            if relation['unresolved_recipes']: body += '本次导出未解析的配方 ID：' + '、'.join(relation['unresolved_recipes']) + '\n'
         if not body:
             skipped.append(r['id']); continue
         if r['license'] == 'NOASSERTION':
@@ -78,8 +92,20 @@ def build_pack(bundle, output, revision='r1', repository='TerraFirmaGreg-Transla
         path = 'documents/' + filename
         files[path] = text.encode()
         documents.append({k:r[k] for k in ['id','kind','source_id','source_url','source_path','commit','license','language','version_relation','applicable_modpack_version']} | {'title':title,'path':path,'sha256':sha(files[path]),'size':len(files[path])})
+    if media:
+        files.update(media_files)
+        from .media import recipe_text
+        for recipe in media['recipes'].values():
+            rid = 'emi-' + sha(recipe['id'].encode())[:24]
+            title = 'EMI 配方：' + recipe['id']
+            path = 'documents/' + rid + '.md'
+            files[path] = (f"# {title}\n\n适用游戏版本：{version}\n\n" + recipe_text(recipe) + f"\n\n来源：{media['source']['url']}\n来源文件：{recipe['source_path']}\n").encode()
+            documents.append({'id':rid, 'kind':'recipe-display', 'title':title, 'path':path, 'sha256':sha(files[path]), 'size':len(files[path]), 'source_id':'field-guide-runtime', 'source_url':media['source']['url'], 'source_path':recipe['source_path'], 'commit':media['build'].get('field-guide-modern'), 'license':'upstream-asset-specific', 'language':'zh_cn', 'version_relation':'release-matched', 'applicable_modpack_version':version})
+            media['documents'][rid] = {'images':[recipe['image']] if recipe['image'] else [], 'structures':[], 'recipes':[recipe['id']], 'unresolved_recipes':[]}
+        files['media.json'] = encoded(media)
     # Selected broad subjects are a repeatable first-run preview, not a claim of full coverage.
     priority = ['营养素与口渴值','锻铁炉','蒸汽锅炉','耐火黏土','三级砧：锻铁','蒸汽时代矿石处理','赛特斯石英','高炉','木炭','黏土','陶器','食物腐烂','更新与重装整合包']
+    if media: priority[8:8] = ['大桶','EMI 配方：tfc:barrel/limewater','EMI 配方：tfc:barrel/tannin','EMI 配方：tfc:crafting/barrel_rack']
     ordered = sorted(documents,key=lambda d:(next((i for i,t in enumerate(priority) if t in d['title']),999),d['kind']!='field-guide',d['id']))
     preview_ids = [d['id'] for d in ordered[:48]]
     files['documents.json'] = encoded(documents)
@@ -106,6 +132,9 @@ def build_pack(bundle, output, revision='r1', repository='TerraFirmaGreg-Transla
                 'documents':documents,'preview_ids':preview_ids,'excluded_records':len(skipped),'references_only':references,
                 'retrieval':{'parser_id':'naive','parse_type':1,'chunk_token_num':512},
                 'limitations':['仅中文玩家资料，不含源码和运行时完整配方','Wiki 独立快照不代表与游戏版本严格匹配','图示和多方块布局未重建','不包含模型或 API 密钥']}
+    if media:
+        manifest['media'] = {'path':'media.json', 'sha256':sha(files['media.json']), 'size':len(files['media.json']), 'assets':len(media['assets']), 'recipes':len(media['recipes']), 'structures':len(media['structures']), 'coverage':media['coverage'], 'distribution':'local-preview; asset license review pending'}
+        manifest['limitations'] = ['配方仅为官方手册引用的 EMI 展示子集，不是完整执行定义', '未导出的数量、耗时、能耗和概率保持未知', '图片为原始资产；未执行视觉理解；结构仅保留原始 pattern/mapping', '媒体许可证尚未逐项审查，本版仅作本地预览']
     for path,data in [(archive_path,archive),(release_dir/'manifest.json',encoded(manifest))]:
         if path.exists() and path.read_bytes()!=data: raise ValueError('不可覆盖已有不同内容的知识包；请增加 revision')
         path.write_bytes(data)

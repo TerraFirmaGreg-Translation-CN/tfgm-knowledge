@@ -126,3 +126,5 @@ bun run knowledge:import --url https://github.com/TerraFirmaGreg-Translation-CN/
 ```
 
 详见 [版本化玩家知识库流程](docs/player-knowledge.md)。
+
+图文与配方试验：见 [媒体知识包流程](docs/media-knowledge.md)，支持原图关联、结构分层预览、同版本 EMI 子集查询，以及检索结果的媒体补充。
