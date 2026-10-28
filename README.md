@@ -103,3 +103,15 @@ GitHub Actions 的 **Update knowledge** 工作流每天北京时间 **10:00** �
 - 历史版本如果没有匹配的 Core 发布标签，解析将明确失败，不使用开发分支冒充。
 
 本项目采集器代码采用 MIT。下载的文档、代码、翻译和资源保持各自上游权利；`NOASSERTION` 表示未识别出许可证，不表示内容可以任意再分发。本项目不是 TFG 官方团队维护的项目。
+
+## 本地知识库开发环境
+
+已提供隔离的 RAGFlow Docker 基础设施和自签 HTTPS 入口：
+
+```bash
+bun run mode:start
+bun run mode:status
+bun run mode:help
+```
+
+账户、模型配置、资源限制及清理策略见 [本地开发说明](docs/local-infra.md)。此环境与生产独立；基础设施启动后仍需配置 embedding 模型并选择文档入库。

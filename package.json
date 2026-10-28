@@ -1,0 +1,13 @@
+{
+  "name": "tfgm-knowledge",
+  "private": true,
+  "scripts": {
+    "mode:start": "python3 scripts/mode.py start",
+    "mode:stop": "python3 scripts/mode.py stop",
+    "mode:status": "python3 scripts/mode.py status",
+    "mode:health": "python3 scripts/mode.py health",
+    "mode:logs": "python3 scripts/mode.py logs",
+    "mode:help": "python3 scripts/mode.py help",
+    "mode:clean": "python3 scripts/mode.py clean"
+  }
+}
