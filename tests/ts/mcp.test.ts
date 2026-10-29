@@ -75,3 +75,10 @@ test('external semantic tool is opt-in and does not alter offline tools',async()
   const local=await client.callTool({name:'kb_get_recipe',arguments:{version:'0.13.15',id:'r1'}});expect(local.isError).not.toBe(true);
  }finally{await client.close();await server.stop(true)}
 });
+
+test('reverse proxy public Origin is accepted only when explicitly configured',async()=>{
+ const handler=createHandler(kb,{token:'secret',instanceId:'test',allowedHosts:['localhost'],allowedOrigins:['https://mcp.example.com']});
+ const call=(origin:string)=>handler(new Request('http://localhost/health',{headers:{authorization:'Bearer secret',origin}}));
+ expect((await call('https://mcp.example.com')).status).toBe(200);
+ expect((await call('https://other.example.com')).status).toBe(403);
+});

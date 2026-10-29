@@ -3,7 +3,7 @@ import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/
 import { KnowledgeLibrary } from '@tfgm/knowledge';
 import { timingSafeEqual } from 'node:crypto';
 import { createMcpServer } from './tools';
-export function createHandler(kb: KnowledgeLibrary, options: { token: string; instanceId: string; allowedHosts: string[]; ragflow?: Ragflow }) {
+export function createHandler(kb: KnowledgeLibrary, options: { token: string; instanceId: string; allowedHosts: string[]; allowedOrigins?: string[]; ragflow?: Ragflow }) {
   function authorized(header: string | null) {
     const given = Buffer.from(header ?? ''); const expected = Buffer.from('Bearer ' + options.token);
     return given.length === expected.length && timingSafeEqual(given, expected);
@@ -12,7 +12,7 @@ export function createHandler(kb: KnowledgeLibrary, options: { token: string; in
     const url = new URL(request.url);
     if (!options.allowedHosts.includes(url.hostname)) return new Response('Invalid host',{status:403});
     const origin=request.headers.get('origin');
-    if (origin && origin!==url.origin) return new Response('Invalid origin',{status:403});
+    if (origin && origin!==url.origin && !options.allowedOrigins?.includes(origin)) return new Response('Invalid origin',{status:403});
     if (!authorized(request.headers.get('authorization'))) return new Response('Unauthorized',{status:401});
     if (url.pathname==='/health') return Response.json({status:'ok',instanceId:options.instanceId,snapshot_id:kb.snapshotId,online_tools_enabled:false},{headers:{'X-TFGM-Instance':options.instanceId}});
     if (url.pathname!=='/mcp') return new Response('Not found',{status:404});

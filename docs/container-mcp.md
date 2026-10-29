@@ -68,3 +68,11 @@ docker compose -p tfgm-kb-4e8bbffb9af8-mcp -f compose.mcp.yaml up -d --wait
 地址 `https://192.168.182.137:26511/mcp`，令牌和证书仍使用 `.local/mcp/token` 与 `.local/mcp/certs/cert.pem`。复用旧进程凭据方便开发验收，生产部署应提供专用凭据。旧本机进程仍可通过原有 mode:mcp 命令管理；这些命令不会停止本容器。
 
 运行容器验收：`TFGM_MCP_URL=https://127.0.0.1:26511/mcp bun scripts/check-mcp.ts`。
+
+## 由公网入口终止 HTTPS，容器使用 HTTP
+
+容器支持 `TFGM_TRANSPORT=http`，健康检查随之使用 HTTP，程序不再读取证书和私钥。保留 Bearer 认证。现有 HTTPS 部署未设置该值时行为不变。
+
+将此变量传入服务 environment 后，移除 Compose 的 `/run/tls` 挂载即可使用纯 HTTP 后端。内外端口映射仍可为 `26511:8443`，8443 只是容器监听端口，不代表一定启用 TLS。反向代理上游填写 `http://服务器地址:26511`，MCP 路径是 `/mcp`，透传 Authorization 请求头。
+
+如果入口保留公网 Host，将该域名添加到 TFGM_ALLOWED_HOSTS。浏览器客户端携带公网 Origin 时，在 TFGM_ALLOWED_ORIGINS 中设置完整来源（例如 https://mcp.example.com，逗号分隔）。不使用通配允许，也不根据任意 X-Forwarded-* 请求头改变信任范围。

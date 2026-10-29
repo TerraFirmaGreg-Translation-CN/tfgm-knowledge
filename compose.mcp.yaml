@@ -14,6 +14,8 @@ services:
     ports:
       - "${TFGM_BIND_HOST:-127.0.0.1}:${TFGM_MCP_PORT:-26511}:8443"
     environment:
+      TFGM_TRANSPORT: ${TFGM_TRANSPORT:-https}
+      TFGM_ALLOWED_ORIGINS: ${TFGM_ALLOWED_ORIGINS:-}
       TFGM_ALLOWED_HOSTS: ${TFGM_ALLOWED_HOSTS:-localhost,127.0.0.1}
       TFGM_RAGFLOW_CONFIG: /run/config/ragflow.json
     volumes:
