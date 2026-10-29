@@ -12,7 +12,7 @@
 
 - `tfgm-mcp-v0.1.0-deploy.zip`：初始化脚本和 Compose 配置。
 - `tfgm-mcp-v0.1.0-linux-amd64.tar.gz`：容器镜像，使用 `docker load -i` 导入。
-- `tfgm-library-r1.zip`：离线知识包，约 1.47 GB，解压至部署目录的 knowledge/。
+- `tfgm-library-r1.zip.partNNN`：离线知识包分片，总计约 1.47 GB。部署包中的 `download-knowledge.sh` 自动下载、校验并合并为 ZIP，再解压至 knowledge/。
 - `tfgm-library-r1.zip.json`：知识包摘要和版本格式信息。
 - `SHA256SUMS`：Release 附件校验值。
 

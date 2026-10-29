@@ -13,6 +13,7 @@ compose = compose.replace('    build:\n      context: .\n      dockerfile: Docke
 compose = compose.replace('tfgm-knowledge-mcp:local', f'tfgm-knowledge-mcp:{version}')
 files = {
     'prepare.sh': root/'deploy/release/prepare.sh',
+    'download-knowledge.sh': root/'deploy/release/download-knowledge.sh',
     'README.md': root/'deploy/release/README.md',
     'DATA-SOURCES.md': root/'deploy/release/DATA-SOURCES.md',
     'LICENSE': root/'LICENSE',

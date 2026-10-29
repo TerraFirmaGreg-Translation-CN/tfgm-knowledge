@@ -1,6 +1,6 @@
 # TFGM MCP v0.1.0 预览版
 
-此部署包不需要本机安装 Bun、Python 或 RAGFlow。需要 Linux amd64、Docker Engine + Compose v2、OpenSSL、unzip、sha256sum，以及足够存放镜像和解压知识库的磁盘空间。镜像仅提供 linux/amd64，不宣称支持原生 ARM64。
+此部署包不需要本机安装 Bun、Python 或 RAGFlow。需要 Linux amd64、Docker Engine + Compose v2、OpenSSL、curl、unzip、sha256sum，以及足够存放镜像和解压知识库的磁盘空间。镜像仅提供 linux/amd64，不宣称支持原生 ARM64。
 
 ## 下载与安装
 
@@ -8,7 +8,7 @@
 
 - tfgm-mcp-v0.1.0-deploy.zip
 - tfgm-mcp-v0.1.0-linux-amd64.tar.gz
-- tfgm-library-r1.zip
+- 知识包分片由部署包中的 download-knowledge.sh 自动下载
 - SHA256SUMS
 
 在下载目录校验并安装：
@@ -16,10 +16,11 @@
 ```sh
 sha256sum --check --ignore-missing SHA256SUMS
 unzip tfgm-mcp-v0.1.0-deploy.zip
-mkdir -p tfgm-mcp-v0.1.0/knowledge
-unzip tfgm-library-r1.zip -d tfgm-mcp-v0.1.0/knowledge
 docker load -i tfgm-mcp-v0.1.0-linux-amd64.tar.gz
 cd tfgm-mcp-v0.1.0
+./download-knowledge.sh
+mkdir -p knowledge
+unzip tfgm-library-r1.zip -d knowledge
 ./prepare.sh 192.168.1.100  # 替换为实际访问 IPv4 或域名
 # 多实例部署时修改 .env 的 COMPOSE_PROJECT_NAME 和 TFGM_MCP_PORT
 docker compose up -d --wait
@@ -53,3 +54,5 @@ docker compose down
 日志按 10 MiB × 3 轮转。停止和删除容器不会删除宿主 knowledge、config、secrets、tls。更新知识包时先校验新包，停止服务并切换挂载目录后再启动，保留旧包回滚。不要覆盖正在查询的 SQLite。
 
 本包程序许可见 LICENSE；第三方知识和媒体来源见 DATA-SOURCES.md，不因打包而变更其权属。
+
+知识包以 64 MiB 分片发布。下载脚本校验每片及合并后的完整 ZIP；重跑跳过已校验分片。合并后可删除 downloads 内分片节省空间。校验值用于完整性检查，不替代可信发布来源。
