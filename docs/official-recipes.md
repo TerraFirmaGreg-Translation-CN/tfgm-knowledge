@@ -1,5 +1,7 @@
 # 官方配方站接入与 Agent 查询
 
+> 本文保留早期按需缓存方式。当前 Agent 推荐使用[完整离线知识库](offline-knowledge.md)；此旧接口不是完整离线收录的证明。
+
 数据源仅使用 [TFGM 官方配方站](https://wiki.terrafirmagreg.team/modern/recipe-book/) 已处理好的 JSON。无需安装导出器、启动游戏或抓取配方截图。
 
 2026-10-29 核验：`build.json` 为 **0.13.15**，构建 `site-tfg-0.13.15-09bf39c`。`bundle.json` 声明 140,426 条配方；物品目录有 23,383 个 ID，中文名称表有 22,609 条记录。数量并非全量人工验证结果，也不等于当前已下载的配方数。
