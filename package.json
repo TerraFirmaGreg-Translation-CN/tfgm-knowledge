@@ -17,6 +17,29 @@
     "knowledge:recipe": "python3 -m tfgm_knowledge.knowledge_cli recipe",
     "knowledge:media-preview": "python3 -m tfgm_knowledge.knowledge_cli media-preview",
     "knowledge:official": "python3 -m tfgm_knowledge.official_recipes",
-    "knowledge:offline": "python3 -m tfgm_knowledge.offline"
-  }
+    "knowledge:offline": "python3 -m tfgm_knowledge.offline",
+    "typecheck": "tsc --noEmit",
+    "test:ts": "bun test tests/ts",
+    "knowledge:ts": "bun apps/cli/src/index.ts",
+    "mcp:stdio": "bun apps/mcp-server/src/stdio.ts",
+    "mode:mcp:start": "bun scripts/mcp-mode.ts start",
+    "mode:mcp:stop": "bun scripts/mcp-mode.ts stop",
+    "mode:mcp:status": "bun scripts/mcp-mode.ts status",
+    "mode:mcp:health": "bun scripts/mcp-mode.ts health",
+    "mode:mcp:logs": "bun scripts/mcp-mode.ts logs",
+    "mode:mcp:help": "bun scripts/mcp-mode.ts help"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4",
+    "typescript": "7.0.2"
+  },
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

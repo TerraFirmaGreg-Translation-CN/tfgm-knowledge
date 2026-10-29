@@ -134,3 +134,9 @@ bun run knowledge:import --url https://github.com/TerraFirmaGreg-Translation-CN/
 官方完整配方站接入：见 [官方配方查询与 Agent HTTP 接口](docs/official-recipes.md)。使用已经发布的 JSON、官方图片链接与按版本隔离的本地缓存，无需启动游戏。
 
 Agent Skill：[tfgm-knowledge](skills/tfgm-knowledge/SKILL.md)。提供版本核对、离线文档检索、配方／用途查询及本地图片读取规则；Skill 不包含大型知识包。安装后可用 `$tfgm-knowledge` 调用。脚本支持 `--repo`、`--library` 或对应环境变量定位本地代码和数据。
+
+## TypeScript / Bun MCP
+
+新增离线 MCP 服务，供 AstrBot 等客户端查询版本、文档、物品、配方、用途及图片。运行 `bun run mode:mcp:start` 启动 HTTPS 服务，`bun run mode:mcp:status` 查看实际地址。数据构建仍沿用现有 Python 管道。
+
+详细部署、工具边界与 AstrBot 配置见 [TypeScript MCP 说明](docs/typescript-mcp.md)，查询规程见 [AstrBot Skill](skills/tfgm-astrbot/SKILL.md)。

@@ -31,6 +31,7 @@ STATE = LOCAL / 'state.json'
 COMMANDS = {
     '服务管理': {'start': '启动并等待 HTTPS 和依赖就绪', 'stop': '停止本项目容器，保留全部数据'},
     '状态与排障': {'status': '查看状态、访问地址与空间', 'health': '检查真实服务健康，失败返回非零', 'logs': '显示最近日志（--follow 持续跟踪）', 'help': '显示分组帮助'},
+    'MCP 服务': {'mcp:start': '启动 Bun MCP（独立于 RAGFlow）', 'mcp:stop': '停止 Bun MCP，保留知识包', 'mcp:status': '查看 MCP 地址、身份与知识包', 'mcp:health': '验证 MCP HTTPS 健康', 'mcp:logs': '查看 MCP 轮转日志', 'mcp:help': 'MCP 服务帮助'},
     '维护': {'clean': '清理登记的过期临时文件（--dry-run 只读预览）'},
 }
 
@@ -91,7 +92,7 @@ def docker_identity():
 
 def verify_daemon(c):
     actual = docker_identity()
-    if c and actual != c['docker']:
+    if c and c.get('docker') and actual != c['docker']:
         raise RuntimeError('Docker context/daemon 与初始化时不一致，拒绝操作其它实例')
     return actual
 
@@ -140,7 +141,7 @@ def storage(c):
     policy = c['storage'] if c else {'budgetFraction': .01, 'budgetCapBytes': 2 * 1024**3, 'temporaryDays': 7, 'triggers': [75,85,92], 'exits': [70,78,85]}
     project = filesystem(ROOT)
     daemon = {'unknown': 'Docker 文件系统未获取'}
-    if c and c['docker']['endpoint'].startswith('unix://'):
+    if c and c.get('docker') and c['docker']['endpoint'].startswith('unix://'):
         daemon = filesystem(c['docker']['root'])
     if daemon.get('device') == project.get('device'):
         daemon = {**daemon, 'sameAsProject': True}
@@ -210,6 +211,9 @@ def prepare():
         port = 18000 + int(hashlib.sha256((KEY + '\0docker\0port\0https').encode()).hexdigest()[:8], 16) % 10000
         c = {'version': 1, 'repoKey': KEY, 'docker': daemon, 'portBase': port, 'actualPort': port, 'bindHost': '0.0.0.0',
              'storage': {'triggers': [75, 85, 92], 'exits': [70, 78, 85], 'temporaryDays': 7, 'budgetFraction': .01, 'budgetCapBytes': 2 * 1024**3}}
+        write(CONFIG, c)
+    if not c.get('docker'):
+        c['docker'] = daemon
         write(CONFIG, c)
     GENERATED.mkdir(mode=0o700, exist_ok=True)
     secret_path = LOCAL / 'credentials.json'
@@ -433,7 +437,7 @@ def render(kind, data=None, color=False, columns=None):
             lines.append('  ' + paint(label + ' ' * max(1, (16 if kind == 'help' else 12) - width(label)), 36 if label.startswith('mode:') else 2) + paint(str(value), n))
     if kind == 'help':
         row('用法', 'bun run mode:<命令> [参数]')
-        row('当前模式', 'Docker · 本地开发（唯一模式）')
+        row('当前模式', 'RAGFlow：Docker；MCP：独立 Bun 服务')
         row('配置文件', CONFIG)
         for group, cmds in COMMANDS.items():
             lines.extend(['', '  ' + paint(group, 1)])
@@ -469,11 +473,24 @@ def render(kind, data=None, color=False, columns=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('command', choices=[x for group in COMMANDS.values() for x in group])
+    parser.add_argument('command', choices=[x for group in COMMANDS.values() for x in group] + ['mcp-config'])
     parser.add_argument('--json', action='store_true')
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('--follow', action='store_true')
     args = parser.parse_args()
+    if args.command == 'mcp-config':
+        with lock():
+            c = config()
+            if c is None:
+                port = 18000 + int(hashlib.sha256((KEY + '\0docker\0port\0https').encode()).hexdigest()[:8], 16) % 10000
+                c = {'version':1, 'repoKey':KEY, 'docker':None, 'portBase':port, 'actualPort':port, 'bindHost':'0.0.0.0', 'storage':{'triggers':[75,85,92], 'exits':[70,78,85], 'temporaryDays':7, 'budgetFraction':.01, 'budgetCapBytes':2*1024**3}}
+            c.setdefault('mcp', {'library':str(ROOT/'dist/offline/tfgm-library-r1'), 'bindHost':'0.0.0.0', 'portBase':18000+int(hashlib.sha256((KEY+'\0mcp\0https').encode()).hexdigest()[:8],16)%10000, 'logMaxBytes':10*1024**2, 'logBackups':3})
+            write(CONFIG,c)
+            print(json.dumps(c['mcp']))
+        return 0
+    if args.command.startswith('mcp:'):
+        forwarded = [flag for flag,enabled in [('--json',args.json),('--dry-run',args.dry_run),('--follow',args.follow)] if enabled]
+        return subprocess.call(['bun', str(ROOT/'scripts/mcp-mode.ts'), args.command.split(':',1)[1], *forwarded], cwd=ROOT)
     def emit(kind, data):
         print(json.dumps(data, ensure_ascii=False) if args.json else render(kind, data, color_enabled(machine=args.json)))
     def step(text): print('→ ' + text, file=sys.stderr)
