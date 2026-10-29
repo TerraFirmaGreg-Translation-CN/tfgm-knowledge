@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "url": "https://ragflow.example.com",
+  "apiKeyFile": "/run/config/ragflow-api-key",
+  "timeoutMs": 15000,
+  "datasets": {
+    "0.13.17": ["REPLACE_WITH_TFGM_0_13_17_DATASET_ID"]
+  }
+}

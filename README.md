@@ -140,3 +140,5 @@ Agent Skill：[tfgm-knowledge](skills/tfgm-knowledge/SKILL.md)。提供版本核
 新增离线 MCP 服务，供 AstrBot 等客户端查询版本、文档、物品、配方、用途及图片。运行 `bun run mode:mcp:start` 启动 HTTPS 服务，`bun run mode:mcp:status` 查看实际地址。数据构建仍沿用现有 Python 管道。
 
 详细部署、工具边界与 AstrBot 配置见 [TypeScript MCP 说明](docs/typescript-mcp.md)，查询规程见 [AstrBot Skill](skills/tfgm-astrbot/SKILL.md)。
+
+独立容器部署使用 `compose.mcp.yaml`，RAGFlow 作为可选外部服务配置，不随本服务部署。详见 [容器与共享 RAGFlow](docs/container-mcp.md)。

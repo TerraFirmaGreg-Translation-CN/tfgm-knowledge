@@ -69,3 +69,5 @@ bun run mode:mcp:stop
 暂不提供完整路线规划、自动最优路线、在线查询工具或语义向量检索。后续把 RAGFlow 适配器接入同一知识服务，把在线工具放进显式 online_* 分组；离线工具继续保持不联网。新模块位于 apps/mcp-server、apps/cli、packages/contracts、packages/knowledge；不在本轮重写 Python 数据管道。
 
 stdio 也可使用：设置 `TFGM_KNOWLEDGE_LIBRARY` 为包的绝对路径，执行 `bun run mcp:stdio`。客户端应直接启动 Bun 和 apps/mcp-server/src/stdio.ts，避免脚本包装器向协议 stdout 写日志。
+
+独立容器部署与可选共享 RAGFlow 接入已补充，见 [容器部署说明](container-mcp.md)。容器默认仍提供 8 个离线工具；启用外部配置后增加 `kb_search_semantic`，不改变 `kb_search` 的离线行为。

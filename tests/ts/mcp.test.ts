@@ -60,3 +60,18 @@ test('official SDK initializes, lists and calls stateless HTTP tools including i
   expect((image.content as any[])[1].type).toBe('image');
  } finally {await client.close();await server.stop(true)}
 });
+
+test('external semantic tool is opt-in and does not alter offline tools',async()=>{
+ const {Ragflow}=await import('../../apps/mcp-server/src/ragflow');
+ const key=join(root,'api-key');writeFileSync(key,'secret');
+ const ragflow=new Ragflow({enabled:true,url:'https://rag.example',apiKeyFile:key,datasets:{'0.13.17':['d']}},(async()=>Response.json({code:0,data:{total:1,chunks:[{dataset_id:'d',content:'高炉说明',id:'c',document_id:'doc'}]}})) as unknown as typeof fetch);
+ const server=Bun.serve({hostname:'127.0.0.1',port:0,fetch:createHandler(kb,{token:'secret',instanceId:'test',allowedHosts:['127.0.0.1'],ragflow})});
+ const client=new Client({name:'external-test',version:'1'});
+ try{
+  await client.connect(new StreamableHTTPClientTransport(new URL(`http://127.0.0.1:${server.port}/mcp`),{requestInit:{headers:{Authorization:'Bearer secret'}}}));
+  const list=await client.listTools();expect(list.tools).toHaveLength(9);expect(list.tools.find(t=>t.name==='kb_search_semantic')?.annotations?.openWorldHint).toBe(true);
+  const result=await client.callTool({name:'kb_search_semantic',arguments:{version:'0.13.17',query:'高炉'}});expect((result.structuredContent as any).source_mode).toBe('external_ragflow');
+  const fail=await client.callTool({name:'kb_search_semantic',arguments:{version:'0.13.15',query:'高炉'}});expect(fail.isError).toBe(true);expect((fail.structuredContent as any).snapshot_id).toBeUndefined();
+  const local=await client.callTool({name:'kb_get_recipe',arguments:{version:'0.13.15',id:'r1'}});expect(local.isError).not.toBe(true);
+ }finally{await client.close();await server.stop(true)}
+});

@@ -1,0 +1,10 @@
+**
+!package.json
+!bun.lock
+!apps/
+!apps/cli/
+!apps/cli/package.json
+!apps/mcp-server/
+!apps/mcp-server/**
+!packages/
+!packages/**

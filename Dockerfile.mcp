@@ -1,0 +1,14 @@
+FROM oven/bun:1.4.4@sha256:1d22548f177f4ff38e0c15baa3c2c46c6c2060ba2d1bc573bb4720b407548f1d
+WORKDIR /app
+COPY package.json bun.lock ./
+COPY apps/cli/package.json apps/cli/package.json
+COPY apps/mcp-server/package.json apps/mcp-server/package.json
+COPY packages/contracts/package.json packages/contracts/package.json
+COPY packages/knowledge/package.json packages/knowledge/package.json
+RUN bun install --frozen-lockfile --production --ignore-scripts
+COPY packages ./packages
+COPY apps/mcp-server ./apps/mcp-server
+USER bun
+EXPOSE 8443
+HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 CMD ["bun", "apps/mcp-server/src/healthcheck.ts"]
+CMD ["bun", "apps/mcp-server/src/container.ts"]

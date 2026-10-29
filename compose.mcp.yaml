@@ -1,0 +1,42 @@
+# Standalone service. No RAGFlow container, database, or shared network required.
+services:
+  mcp:
+    image: ${TFGM_MCP_IMAGE:-tfgm-knowledge-mcp:local}
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    user: "${TFGM_UID:-1000}:${TFGM_GID:-1000}"
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    ports:
+      - "${TFGM_BIND_HOST:-127.0.0.1}:${TFGM_MCP_PORT:-26511}:8443"
+    environment:
+      TFGM_ALLOWED_HOSTS: ${TFGM_ALLOWED_HOSTS:-localhost,127.0.0.1}
+      TFGM_RAGFLOW_CONFIG: /run/config/ragflow.json
+    volumes:
+      - type: bind
+        source: ${TFGM_LIBRARY_DIR:-./dist/offline/tfgm-library-r1}
+        target: /data/knowledge
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${TFGM_TLS_DIR:-./.local/mcp/certs}
+        target: /run/tls
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${TFGM_TOKEN_PATH:-./.local/mcp/token}
+        target: /run/secrets/mcp-token
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${TFGM_EXTERNAL_CONFIG_DIR:-./deploy}
+        target: /run/config
+        read_only: true
+        bind: {create_host_path: false}
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
