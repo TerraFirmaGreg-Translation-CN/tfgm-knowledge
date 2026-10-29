@@ -1,0 +1,27 @@
+{
+  "bootstrap_sha256": {
+    "bundle.json": "3433e44aaaeaf4ce24b447d04ac2d815c1513f4d7a5122031ea0b23514a49190",
+    "items-lang/zh_cn.json": "ab656cf29883f2e6eee7d80d017bc8884b088a20e55dd32d4c8a6821896609b3",
+    "items/index.json": "bc7a3b55fc53ae962632b96b8bf984c688b825870bc2dc835b081c5523c8d8b4"
+  },
+  "build": {
+    "contentHash": "09bf39c",
+    "emi-bundle-optimize": "0.4.5",
+    "emi-recipe-renderer": "0.6.6",
+    "headlessmc": "2.9.0",
+    "minecraft-web-export": "0.7.3",
+    "modpack": "0.13.15",
+    "recipe-book-react": "0.7.6",
+    "releaseTag": "site-tfg-0.13.15-09bf39c"
+  },
+  "bundle": "tfg-0.13.15",
+  "coverage": "official site inventory; recipe details cached on demand, not a full offline mirror",
+  "declared_recipe_count": 140426,
+  "downloaded_at": "2026-10-29T04:48:19.528483+00:00",
+  "game_version": "0.13.15",
+  "indexed_item_count": 23383,
+  "named_item_count": 22609,
+  "precision": "display data; omitted amounts and execution conditions remain unknown",
+  "schema": "tfgm-official-recipes/v1",
+  "source_url": "https://wiki.terrafirmagreg.team/modern/recipe-book/"
+}

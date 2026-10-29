@@ -15,6 +15,7 @@
     "knowledge:query": "python3 -m tfgm_knowledge.knowledge_cli query",
     "knowledge:evaluate": "python3 -m tfgm_knowledge.knowledge_cli evaluate",
     "knowledge:recipe": "python3 -m tfgm_knowledge.knowledge_cli recipe",
-    "knowledge:media-preview": "python3 -m tfgm_knowledge.knowledge_cli media-preview"
+    "knowledge:media-preview": "python3 -m tfgm_knowledge.knowledge_cli media-preview",
+    "knowledge:official": "python3 -m tfgm_knowledge.official_recipes"
   }
 }
