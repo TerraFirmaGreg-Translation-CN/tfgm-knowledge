@@ -1,0 +1,4 @@
+interface:
+  display_name: "TFGM 离线知识库"
+  short_description: "按游戏版本查询本地文档、物品配方、用途和图片，保留来源与未知参数"
+  default_prompt: "使用 $tfgm-knowledge，从本地知识库查找与我的游戏版本匹配的配方或机制说明，并注明来源与缺失信息。"

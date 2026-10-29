@@ -7,3 +7,6 @@ __pycache__/
 sources/lock.json
 
 .local/
+
+# Machine-local skill paths
+skills/*/settings.json

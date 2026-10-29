@@ -132,3 +132,5 @@ bun run knowledge:import --url https://github.com/TerraFirmaGreg-Translation-CN/
 图文与配方试验：见 [媒体知识包流程](docs/media-knowledge.md)，支持原图关联、结构分层预览、同版本 EMI 子集查询，以及检索结果的媒体补充。
 
 官方完整配方站接入：见 [官方配方查询与 Agent HTTP 接口](docs/official-recipes.md)。使用已经发布的 JSON、官方图片链接与按版本隔离的本地缓存，无需启动游戏。
+
+Agent Skill：[tfgm-knowledge](skills/tfgm-knowledge/SKILL.md)。提供版本核对、离线文档检索、配方／用途查询及本地图片读取规则；Skill 不包含大型知识包。安装后可用 `$tfgm-knowledge` 调用。脚本支持 `--repo`、`--library` 或对应环境变量定位本地代码和数据。
