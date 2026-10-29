@@ -142,3 +142,7 @@ Agent Skill：[tfgm-knowledge](skills/tfgm-knowledge/SKILL.md)。提供版本核
 详细部署、工具边界与 AstrBot 配置见 [TypeScript MCP 说明](docs/typescript-mcp.md)，查询规程见 [AstrBot Skill](skills/tfgm-astrbot/SKILL.md)。
 
 独立容器部署使用 `compose.mcp.yaml`，RAGFlow 作为可选外部服务配置，不随本服务部署。详见 [容器与共享 RAGFlow](docs/container-mcp.md)。
+
+### 安装发布版
+
+首个容器预览版为 `v0.1.0`。从 [GitHub Releases](https://github.com/TerraFirmaGreg-Translation-CN/tfgm-knowledge/releases) 下载部署 ZIP、linux-amd64 镜像归档、离线知识包与 SHA256SUMS，按部署包 README 校验并启动。部署机无需安装 Bun；初始化脚本会准备本机凭据，发布包不携带任何实际密钥。
